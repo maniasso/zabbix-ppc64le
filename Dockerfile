@@ -67,10 +67,12 @@ RUN mkdir -p /var/www/html/zabbix && \
     chown -R zabbix:zabbix /var/www/html/zabbix
 
 COPY php.ini /etc/php/8.1/apache2/
+COPY locale.gen /etc
 COPY supervisord.conf /etc/supervisor
 COPY startup.sh /startup.sh
 COPY zabbix_server.conf /usr/local/etc
-RUN chmod +x /startup.sh
+RUN chmod +x /startup.sh && \
+    locale-gen
 
 EXPOSE 80 10051
 VOLUME [ "/usr/local/etc","/var/www/html" ]
