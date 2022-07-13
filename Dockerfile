@@ -74,7 +74,7 @@ COPY zabbix_server.conf /usr/local/etc
 RUN chmod +x /startup.sh && \
     locale-gen
 
-EXPOSE 80 10051
+EXPOSE 80 10051 10050
 VOLUME [ "/usr/local/etc","/var/www/html" ]
 
 ENTRYPOINT [ "/startup.sh" ]
